@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Stack and Queue</title>
+        <meta charset='utf-8' />
+        <link rel='stylesheet' type='text/css' href='./css/common.css' />
+        <script href='./js/elements-query.js'></script>
+        <script href='./js/common.js'></script>
+    </head>
+    <body>
+        <h1 class='title'>Stack and queue<span class='chn'>栈与队列</span></h1>
+        <details class='card'>
+            <summary>Stack<span class='chn'>栈</span></summary>
+            <hr />
+            <h3 class='chn'>栈的概念</h3>
+            <p><span class='chn'>栈是一种先进后出</span>(FILO)<span class='chn'>的数据结构。可以将其理解为一个一端封闭的羽毛球筒，想要取出更早放入的羽毛球，就要将更迟放入的羽毛球取出来。</span></p>
+            <h4>eg.<span class='chn'>逆波兰表达式</span></h4>
+            <p><span class='chn'>考虑仅包含单字母变量、圆括号与+、-、*、/的算术式，给出中缀表达式，求出其逆波兰表达式（后缀表达式）。</span></p>
+            <h3 class='chn'>深度优先搜索</h3>
+            <h4 class='chn'>搜索树</h4>
+            <p><span class='chn'>我们这样定义搜索树的结点与接电脑关系：</span></p>
+            <ol>
+                <li class='chn'>搜索树的一个结点表示在问题求解中的一个状态。</li>
+                <li class='chn'>若一个状态能由另一个状态单步转移得到。则前者是后者的子结点。</li>
+                <li class='chn'>搜索树的根节点的状态是问题的初始状态。</li>
+            </ol>
+            <p><span class='chn'>搜索，即是遍历搜索树的过程。</span></p>
+            <p><span class='chn'>深度优先搜索，顾名思义，就是在遍历时，先遍历当前结点的子结点。当当前结点无可遍历子结点时，回到其父节点寻找可遍历的其兄弟结点。重复此过程直到搜索树被完全遍历或遍历被人工终止。</span></p>
+            <h4><span class='chn'>递归</span>(recursion)<span class='chn'>与回溯</span>(backtracking)</h4>
+            <p><span class='chn'>一个递归关系的构成包括递归基础，和递归步骤两部分。举个例子，一个人的祖先可以如此递归定义：一个人的双亲是他的祖先（递归基础），一个人的祖先的双亲同样是该人的祖先（递归步骤）。
+                可用上述方法遍历到的对象即为该人的祖先。不难发现这种调用自身的思想与深度优先搜索的实现需求不谋而合。在深度优先搜索中，我们从搜索树的根节点开始，搜索的方法即对以其子结点为根节点的搜索子树展开搜索。这个过程中可以反复的自身调用搜索方法直至找到答案或者完成搜索树的遍历。</span></p>
+            <p><span class='chn'>回溯的过程即是指撤销当前操作，避免当前操作对下一种操作的影响。</span></p>
+            <h4>eg.<span class='chn'>字符集的排列组合问题</span></h4>
+            <p><span class='chn'>给定一个字符集，求其所有可能的全排列和组合方案。</span></p>
+            <h4>eg.<span class='chn'>八皇后问题</span></h4>
+            <p><span class='chn'>即在一个</span>8*8<span class='chn'>的棋盘上放置八个皇后，求使它们无法互相攻击的方案。</span></p>
+            <h4 class='chn'>深度优先搜索与手动建栈</h4>
+            <p><span class='chn'>不难发现，深度优先搜索与栈的关系很密切。我们往往采用的是下面的编程模板：</span></p>
+            <code>
+                <pre>
+[type] [function name](<em>arguments</em>) {
+    if (&lt;son&gt;.is_empty()) {
+        // some operations
+        return [value];
+    }
+    for ([choice] in &lt;son&gt;) {
+        //makechoice([choice]);
+        //recursion
+        //unmakechoice([choice]);
+    }
+    return [value];
+}
+                </pre>
+            </code>
+            <p><span class='chn'>我们在不断调用自身进行深度优先搜索的过程中，即使将栈顶状态的子状态压入栈中，当栈顶状态不再拥有可遍历的子状态时，弹栈。当栈为空完成搜索。我们在直接使用上述模板实现的时候，调用的是系统栈。
+            但当问题规模比较大的时候，系统栈可能就无法负担我们的需求了（尤其在Windows环境下，Windows的系统栈比较小）。</span></p>
+            <p><span class='chn'>一种解决方法是手工建栈。即自己实现这个在栈中反复调用自身的过程。</span></p>
+            <h4>eg.<span class='chn'>八皇后问题（手工建栈法）</span></h4>
+        </details>
+        <details class='card'>
+            <summary>Queue<span class='chn'>队列</span></summary>
+            <h3 class='chn'>队列的概念</h3>
+            <p><span class='chn'>队列是一种先进先出</span>(FIFO)<span class='chn'>的数据结构。就好像一个在饭堂打饭的队伍，越排在前面的人越早打到饭。队列的种类有顺序队列、循环队列等。</span></p>
+            <blockquote><span class='chn'>队列和栈都是线性表的一种，栈只允许在结尾进行插入和删除操作，队列只允许在开头删除，在结尾插入。对该部分有兴趣可再自行查找资料学习。</span></blockquote>
+            <h3><span class='chn'>宽度优先搜索</span></h3>
+            <p><span class='chn'>宽度优先搜索，即在遍历完当前结点后，优先遍历其兄弟结点。若已无兄弟结点再遍历其子节点。结合队列的性质，不难发现用队列即可实现广度优先搜索。</span></p>
+            <h4>eg.<span class='chn'>简单的迷宫问题</span></h4>
+            <p><span class='chn'>给定一个</span><var>m*n</var><span class='chn'>的矩阵，矩阵被1和-1填充，保证左上角和右下角的元素为1，问是否能从左上角遍历至右下角？最短需要几步？遍历规则如下：每次移动只能沿行或者列移动一格，不可移动至元素值为-1的位置。</span></p>
+            <h4>eg.<span class='chn'>最短路问题</span></h4>
+            <p><span class='chn'>给定一个结点数为</span><var>n(n&leq;1000)</var><span class='chn'>的无向图。边以</span>x, y, l<span class='chn'>的形式给出，分别表示边的两个顶点与边长。给定一个起点，对于若干终点的询问，给出其最短路长度。（请使用搜索法实现）</span></p>
+        </details>
+        <div class='signature chn'>清华大学软件学院韦宇华</div>
+    </body>
+</html>

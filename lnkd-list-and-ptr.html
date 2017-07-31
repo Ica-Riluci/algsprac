@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Linked List and Pointer</title>
+        <meta charset='utf-8' />
+        <link rel='stylesheet' type='text/css' href='./css/common.css' />
+        <script href='./js/elements-query.js'></script>
+        <script href='./js/common.js'></script>
+    </head>
+    <body>
+        <h1 class='title'>Linked list and pointer<span class='chn'>链表与指针</span></h1>
+        <details class='card'>
+            <summary>Stack space and heap space<span class='chn'>栈空间与堆空间</span></summary>
+            <hr />
+            <h3><span class='chn'>C/C++程序的内存分配</span></h3>
+            <p><span class='chn'>在程序员完成一份</span>C/C++<span class='chn'>代码后，对其进行编译生成可执行程序，需要经过预处理、编译、汇编、链接等步骤。在执行程序时，
+            程序会占用一定的内存。一个</span>C/C++<span class='chn'>程序的占用的内存分为下面几个部分：</span></p>
+            <ol>
+                <li><details class='incard'>
+                    <summary><span class='chn'>栈区</span>(stack space)</summary>
+                    <p><span class='chn'>由系统自动分配，由系统回收。用以存放函数参数、局部变量，操作方法类似于数据结构中的栈。大小固定。分配速度快。</span></p>
+                </details></li>
+                <li><details class='incard'>
+                    <summary><span class='chn'>堆区</span>(heap space)</summary>
+                    <p><span class='chn'>由程序员分配，由程序员释放。若不人为释放，在程序结束时有可能由操作系统释放。操作方式类似于数据结构中的链表。容量灵活。分配速度慢且容易产生内存碎片。</span></p>
+                </details></li>
+                <li><details class='incard'>
+                    <summary><span class='chn'>全局区</span>(static space)</summary>
+                    <p><span class='chn'>由程序员分配，由系统回收。用以存放全局变量和静态变量。</span></p>
+                </details></li>
+                <li><details class='incard'>
+                    <summary><span class='chn'>文字常量区</span>(text constant space)</summary>
+                    <p><span class='chn'>程序结束后系统释放。用以存储常量字符串。</span></p>
+                </details></li>
+                <li><details class='incard'>
+                    <summary><span class='chn'>程序代码区</span>(code space)</summary>
+                    <p><span class='chn'>存储函数体的二进制代码。</span></p>
+                </details></li>
+            </ol>
+            <p><span class='chn'>我们主要关注栈空间与堆空间的使用，尤其是堆空间。因为指针就是从堆空间中申请空间的。而内存问题往往是因为不当的指针操作导致堆空间内存泄漏等问题。
+                （当然也有可能是栈溢出导致的</span>segmentational fault<span clas='chn'>）</span></p>
+            <p><span class='chn'>在</span>C/C++<span class='chn'>中，我们主要通过</span>new/delete<span class='chn'>来申请/释放内存。在对内存管理不熟的情况下强烈建议</span>new/delete<span class='chn'>成对出现来规避内存问题。</span></p>
+        </details>
+        <details class='card'>
+            <summary>Pointer<span class='chn'>指针</span></summary>
+            <hr />
+            <h3><span class='chn'>指针的概念</span></h3>
+            <p><span class='chn'>指针类型是一种特殊的数据类型。一个指针是一个存储了一个内存地址（指向一个变量）的<b>变量</b>。提到指针的变量类型可以指指针类型，一般其长度为</span>4 bytes<span class='chn'>。也可以指指针指向的变量的数据类型。</span></p>
+            <h3><span class='chn'>指针的定义与数组</span></h3>
+            <p><span class='chn'>看下面一组代码。尝试分析其变量类型。</span></p>
+            <code>
+                <pre>
+int a; // 1
+int *p; // 2
+int (*parray)[10]; // 3
+int (*pfunc)(); // 4
+int **pp; // 5
+int arr[10];
+int *parr = new int[10]; // 6
+                </pre>
+            </code>
+            <details class='incard'>
+                <summary>提示</summary>
+                <ol>
+                    <li class='chn'>整型变量</li>
+                    <li class='chn'>指向一个整型变量的指针</li>
+                    <li class='chn'>指向一个长度为10的整型数组的指针</li>
+                    <li class='chn'>指向一个返回类型为整型的函数的指针</li>
+                    <li class='chn'>指向一个指向一个整型变量的指针的指针</li>
+                    <li class='chn'>一个整型数组</li>
+                    <li class='chn'><b>一个整形数组</b></li>
+                </ol>
+            </details>
+            <p><span class='chn'>数组与指针有着密不可分的关系。当你定义了一个数组，其实是定义了一个指向了一段连续空间的开头位置的指针。当你需要调用这个数组的第<var>n</var>个元素时，就相当于将指针后挪<var>n - 1</var>
+                个元素的空间。然后读取其中的数据。</span></p>
+            <p><span class='chn'>由此也可以理解指针的算术运算。试分析下面的代码。</span></p>
+            <code>
+                <pre>
+int data[10];
+int *p = data;
+initdata(); //initialize variant [data]
+if (p == data[0])
+    cout << 'test 1' << endl;
+if (*p == data[0])
+    cout << 'test 2' << endl;
+if (*(p + 1) == data[1])
+    cout << 'test 3' << endl;
+if (p[1] == data[1])
+    cout << 'test 4' << endl;
+                </pre>
+            </code>
+            <h3><span class='chn'>指针相关的运算</span></h3>
+            <h4><span class='chn'>算术运算</span></h4>
+            <p><span class='chn'>结合前文案例，试分析下列语句。</span></p>
+            <code>
+                <pre>
+int *p1, *p2;
+int i;
+//...
+cout &lt;&lt; p1 + i &lt;&lt; endl;
+cout &lt;&lt; p1 - i &lt;&lt; endl;
+p1 += i;
+p1 -= i;
+p1++;
+p1--;
+cout &lt;&lt; p1 - p2 &lt;&lt; endl;;
+//q = p1 + p2;
+                </pre>
+            </code>
+            <h4>*<span class='chn'>运算符和</span>&#38;<span class='chn'>运算符</span></h4>
+            <code>
+                <pre>
+int data = 1;
+int *p;
+p = &#38;data;
+cout << data << endl;
+cout << p << endl;
+cout << *p << endl;
+                </pre>
+            </code>
+            <p><span class='chn'>以上面一段代码为例。输出的第一行输出是<var>1</var></span>(data
+                <span class='chn'>中存储的数据</span>)<span class='chn'>。第二行输出的是指针所指向的地址。第三行输出同第一行。</span></p>
+            <p><span class='chn'>不难看出</span>*<span class='chn'>表示取当前指针所指向的变量的值。</span>&#38;<span class='chn'>表示取出当前变量所在的地址。</span></p>
+            <h3><span class='chn'>函数参数传递与指针</span></h3>
+            <p><span class='chn'>函数参数的传递分为三种：值传递，指针传递和引用传递。前两种传递方法会将实参的一个副本赋予形参传入参数中。而引用传递直接传递实参本身。下面是一个经典的例子。</span></p>
+            <code>
+                <pre>
+int a = 1, b = 2;
+void swap1(int p, int q) {
+    int temp = p;
+    p = q;
+    q = temp;
+}
+void swap2(int *p, int *q) {
+    int temp = *p;
+    *p = *q;
+    *q = temp;
+}
+void swap3(int *p, int *q) {
+    int *temp = p;
+    p = q;
+    q = temp;
+}
+void swap4(int &#38;p, int &#38;q) {
+    int temp = p;
+    p = q;
+    q = temp;
+}
+                </pre>
+            </code>
+            <p><span class='chn'>数组在作为参数传递时采用的是引用传递。</span></p>
+        </details>
+        <details class='card'>
+            <summary>Linked list<span class='chn'>链表</span></summary>
+            <hr />
+            <p><span class='chn'>有关链表的具体定义以及性能分析需要一些额外的前置只是，再次不作展开。常见的链表有：单向链表、双向链表、环形链表等等。</span></p>
+            <code>
+                <pre>
+struct node{
+    // variants that store data
+    struct node *next, *prev;
+    node() {
+        //initialization
+    }
+}; // constructed by [struct]
+
+class node_c {
+    public :
+        node_c() {} // construction and initialization
+        ~node_c() {} // destruction
+        //public functions
+    protected :
+    private :
+        //protected and private functions
+    public :
+    protected :
+    privated :
+    //variants that store data
+}; // constructed by [class]
+                </pre>
+            </code>
+            <h4><span class='chn'>练习1</span></h4>
+            <p><span class='chn'>实现一个链表，要求具有以下功能：</span></p>
+            <ol>
+                <li class='chn'>在一个元素后面插入或者前面插入一个元素。</li>
+                <li class='chn'>在一个元素后面插入或者前面插入一个链表。</li>
+                <li class='chn'>从链表中删除一个元素或者一个子链表。</li>
+                <li class='chn'>翻转链表中的一段。</li>
+            </ol>
+            <h4><span class='chn'>练习2</span></h4>
+            <p><span class='chn'>上述链表在进行上述操作时能判断操作范围的合法性。</span></p>
+        </details>
+        <div class='signature chn'>清华大学软件学院韦宇华</div>
+    </body>
+</html>
