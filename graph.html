@@ -24,16 +24,19 @@
             <h3 class='chn'>通路</h3>
             <p class='def'><span class='chn'>给定一个图中的点与边交替出现的序列</span><var>v<sub>0</sub>e<sub>1</sub>v<sub>1</sub>...e<sub>l</sub>v<sub>l</sub></var><span class='chn'>，
             在有向图中有</span><var>e<sub>i</sub>=&lt;v<sub>i-1</sub>,v<sub>j</sub>&gt;</var><span class='chn'>，在无向图中有</span><var>e<sub>i</sub>=(v<sub>i-1</sub>,v<sub>j</sub>)</var>
-            <span class='chn'>，则称这个序列为该图的一条通路。</span></p>
+            <span class='chn'>，则称这个序列为该图的一条通路。若</span><var>v<sub>0</sub>=v<sub>l</sub></var><span class='chn'>则又称该通路为一个圈</span></p>
             <p class='def'><span class='chn'>在无权图中，通路的长度为通路中边的数量。在带权图中，通路的长度为序列中依次出现的边的权值和。</span></p>
-            <h3 class='chn'>最短路问题</h3>
-            <p><span class='chn def'>对于图中的两个点，若其间存在通路，那么通路中长度最短的一条被称为这两点间的最短路。</span></p>
-            <h4>floyd<span class='chn'>法求最短路</span></h4>
-            <p><span class='chn'><b>利用了动态规划的思想!</b></span></p>
-            <h4>dijkstra<span class='chn'>法求最短路</span></h4>
-            <p><span class='chn'><b>利用了贪心的思想！</b></span></p>
-            <h4>spfa<span class='chn'>法求最短路</span></h4>
-            <p><span class='chn'>利用了搜索，<b>能解决带负权环的图</b>！</span></p>
+            <h3><span class='chn'>连通分量</span></h3>
+            <p class='def'><span class='chn'>考虑一个无向图的某个子图，若该子图的每个点之间都存在一条通路，那么称这个子图为该图的一个连通分量。在有向图中，只要两点间有从一方到另一方的通路存在，则称这两点连通。</span>
+                <span class='chn'>类似的可以定义有向图的（弱）连通分量。若有向图的一个连通分量中的两点之间无论从哪一点出发都存在通路，即称该连通分量为强连通分量。</span></p>
+            <p class='def'><span class='chn'>若无法向一个连通分量中添加新的点以及相关的边使得新的子图仍是一个连通分量，则称该连通分量为一个极大连通分量。</span></p>
+        </details>
+        <details class='card'>
+            <summary>Common types of graph<span class='chn'>常见的图的类型</span></summary>
+            <h3><span class='chn'>二分图</span></h3>
+            <p class='def'><span class='chn'>将图的点集划分为两个互不相交的子集。若一个图是二分图，那么对于其边集中的任意一条边，其两个顶点分属两个子点集。</span></p>
+            <h3><span class='chn'>树与森林</span></h3>
+            <p class='def'><span class='chn'>若一个简单图中不存在圈，则该图为一个森林。森林的一个连通分量即为一棵树。</span></p>
         </details>
         <div class='signature chn'>清华大学软件学院韦宇华</div>
     </body>

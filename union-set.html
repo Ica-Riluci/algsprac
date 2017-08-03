@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Union Set</title>
+        <meta charset='utf-8' />
+        <link rel='stylesheet' type='text/css' href='./css/common.css' />
+        <script href='./js/elements-query.js'></script>
+        <script href='./js/common.js'></script>
+    </head>
+    <body>
+        <h1 class='title'>Union set<span class='chn'>并查集</span></h1>
+        <details class='card'>
+            <summary>Union set<span class='chn'>并查集</span></summary>
+            <hr />
+            <h3 class='chn'>等价关系</h3>
+            <p><span class='chn'>考虑集合</span><var>S</var><span class='chn'>与任意</span><var>x&isin;S, y&isin;S, z&isin;S</var><span class='chn'>，若关系</span><var>R</var><span class='chn'>满足下列条件，则称该关系为等价关系。</span></p>
+            <ol>
+                <li><var>xRx</var></li>
+                <li><span class='chn'>若</span><var>xRy</var><span class='chn'>则</span><var>yRx</var></li>
+                <li><span class='chn'>若</span><var>xRy&and;yRz</var><span class='chn'>则</span><var>xRz</var></li>
+            </ol>
+            <h4><span class='chn'>等价类</span></h4>
+            <p><span class='chn'>在集合</span><var>S</var><span class='chn'>上，</span><var>&forall;x&isin;S,[x]<sub>R</sub></var><span class='chn'>是一个被称为“等价类”的</span><var>S</var><span class='chn'>的子集，且满足</span><var>&forall;y&isin;
+                [x]<sub>R</sub>, xRy</var><span class='chn'>。</span></p>
+            <h3><span class='chn'>并查集的概念</span></h3>
+            <p><span class='chn'>并查集即是一种用来表达等价类的数据结构。并查集通常用一个森林来描述一个集合，森林中的每一棵树便是一个等价类。该树是无根的——树上的结点地位等同。但为了实现的方便，我们通常人为的规定一个根节点。</span></p>
+            <h4>eg.<span class='chn'>实现一个并查集</span></h4>
+            <p><span class='chn'>可以通过维护所有结点的父亲结点来实现并查集，查询时只需判断两个元素所属的树的根节点是否相同即可。而合并两个树，只需要将其中一个的根节点的父亲设成另一个的根节点即可。</span></p>
+            <h5><span class='chn'>极端情况导致的退化与优化</span></h5>
+            <p><span class='chn'>设</span><var>x</var><span class='chn'>是并查集中一颗树的根，</span><var>y</var><span class='chn'>是</span><var>x</var><span class='chn'>的儿子，</span>
+            <var>z</var><span class='chn'>是</span><var>y</var><span class='chn'>的儿子，那么不难发现查询</span><var>z</var><span class='chn'>花费了额外的代价。极端情况便是整棵树退化成一个链。</span></p>
+            <p><span class='chn'>我们的优化目标就是使得查询的深度不超过1层。请尝试实现。</span><p>
+        </details>
+        <div class='signature chn'>清华大学软件学院韦宇华</div>
+    </body>
+</html>
