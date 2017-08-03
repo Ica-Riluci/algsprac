@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>The Concept of Graph图的概念</title>
+        <title>The Concept of Graph</title>
         <meta charset='utf-8' />
         <link rel='stylesheet' type='text/css' href='./css/common.css' />
         <script href='./js/elements-query.js'></script>
@@ -15,9 +15,25 @@
             <p><span class='chn'>图是关系的一种表现方式（数学抽象）。关系的表示可以用点与边进行。</span></p>
             <p><span class='chn'>具体来说，图是点集与边集组成的一个对。</span><var>G=&lt;V, E&gt;</var></p>
             <h4>eg.Ramsey<span class='chn'>问题</span></h4>
+            <p><span class='chn'>证明：6个人中如果没有3个人互相认识，则有三个人互相不认识。</span></p>
             <h3 class='chn'>图的表示方法</h3>
             <p><span class='chn'>如何去表示一个图？方法很多。如邻接矩阵、邻接表、正向表、边表等。我们在此仅介绍邻接表和邻接矩阵。</span></p>
-            <p><span class='chn'>邻接，即与之相邻。邻接矩阵就是用一个矩阵来表示两个点是否相邻。比如说，在邻接矩阵</span></p>
+            <p><span class='chn'>邻接，即与之相邻。邻接矩阵就是用一个矩阵来表示两个点是否相邻。比如说，在邻接矩阵</span>M<sub>n</sub><span class='chn'>中,</span>
+            a<sub>i, j</sub><span class='chn'>取1表示</span>i, j<span class='chn'>之间存在边，取0反之。而邻接表则是对所有节点维护一个链表，链表中存储着所有与该节点相邻的点。</span></p>
+            <h4>eg.<span class='chn'>完成一个邻接表的构建</span></h4>
+            <h3 class='chn'>通路</h3>
+            <p class='def'><span class='chn'>给定一个图中的点与边交替出现的序列</span><var>v<sub>0</sub>e<sub>1</sub>v<sub>1</sub>...e<sub>l</sub>v<sub>l</sub></var><span class='chn'>，
+            在有向图中有</span><var>e<sub>i</sub>=&lt;v<sub>i-1</sub>,v<sub>j</sub>&gt;</var><span class='chn'>，在无向图中有</span><var>e<sub>i</sub>=(v<sub>i-1</sub>,v<sub>j</sub>)</var>
+            <span class='chn'>，则称这个序列为该图的一条通路。</span></p>
+            <p class='def'><span class='chn'>在无权图中，通路的长度为通路中边的数量。在带权图中，通路的长度为序列中依次出现的边的权值和。</span></p>
+            <h3 class='chn'>最短路问题</h3>
+            <p><span class='chn def'>对于图中的两个点，若其间存在通路，那么通路中长度最短的一条被称为这两点间的最短路。</span></p>
+            <h4>floyd<span class='chn'>法求最短路</span></h4>
+            <p><span class='chn'><b>利用了动态规划的思想!</b></span></p>
+            <h4>dijkstra<span class='chn'>法求最短路</span></h4>
+            <p><span class='chn'><b>利用了贪心的思想！</b></span></p>
+            <h4>spfa<span class='chn'>法求最短路</span></h4>
+            <p><span class='chn'>利用了搜索，<b>能解决带负权环的图</b>！</span></p>
         </details>
         <div class='signature chn'>清华大学软件学院韦宇华</div>
     </body>

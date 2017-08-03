@@ -123,6 +123,14 @@ blockquote {
     margin : auto;
 }
 
+/*definition*/
+.def::before {
+    font-weight : 900;
+    margin-right : 2em;
+    content : '定义';
+    font-family : 'chn';
+}
+
 /*title*/
 h1.title {
     width : 80vw;
