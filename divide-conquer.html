@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Divide and Conquer</title>
+        <meta charset='utf-8' />
+        <link rel='stylesheet' type='text/css' href='./css/common.css' />
+        <script href='./js/elements-query.js'></script>
+        <script href='./js/common.js'></script>
+    </head>
+    <body>
+        <h1 class='title'>Divide and conquer<span class='chn'>分治策略</span></h1>
+        <details class='card'>
+            <summary>Concept of divide and conquer<span class='chn'>分治的概念</span></summary>
+            <hr />
+            <p><span class='chn'>分治策略的基本思想如下：</span></p>
+            <ol>
+                <li><span class='chn'>分解：划分子问题，子问题与原问题形式一致，规模更小</span></li>
+                <li><span class='chn'>解决：求解子问题</span></li>
+                <li><span class='chn'>合并：合并子问题的解，求出原问题的解</span></li>
+            </ol>
+            <h4>eg.<span class='chn'>归并排序</span></h4>
+            <blockquote><a href='merge-sort.cpp'></a></blockquote>
+            <p><span class='chn'>从分治策略的步骤可以看出分治策略适用于满足以下条件的情形：</span></p>
+            <ol>
+                <li><span class='chn'>小规模的类似问题容易解决</span></li>
+                <li><span class='chn'>当前问题难以直接解决或者解决方法不直观</span></li>
+                <li><span class='chn'>当前问题可以划分为若干子问题</span></li>
+                <li><span class='chn'>当前问题的解可通过子问题的解组合得到</span></li>
+            </ol>
+            <h4>eg.<span class='chn'>最大子数组问题</span></h4>
+        </details>
+        <details class='card'>
+            <summary>The analysis of divide and conquer<span class='chn'>分治算法的分析</span></summary>
+            <hr />
+            <h3><span class='chn'>递归式</span></h3>
+            <p class='def'><span class='chn'>递归式是一个等式或者不等式，通过一个更小的输入上的函数值来描述当前函数。</span></p>
+            <p><span class='chn'>我们通常用递归式来描述一个递归算法的复杂度。比如说归并排序的复杂度可以这样描述：</span><var>T(n)=&Theta;(1) (n=1); 2T(n/2) + &Theta;(n)</var></p>
+            <h3><span class='chn'>递归树</span></h3>
+            <h3><span class='chn'>主方法</span></h3>
+            <p><span class='chn'>对形如</span><var>T(n) = aT(n/b) + f(n)</var><span class='chn'>的递归式，若其满足以下三种条件中的一种，可以对应求解。</span></p>
+            <ol>
+                <li><span class='chn'>若对于某个正常数&epsilon;有</span><var>f(n)=O(n<sup>log<sub>b</sub>a-&epsilon;</sup>)</var><span class='chn'>，则</span><var>T(n)=&Theta;(n<sup>log(<sub>b</sub>a)</sup>)</var></li>
+                <li><span class='chn'>若</span><var>f(n)=&Theta;(n<sup>log<sub>b</sub>a</sup>)</var><span class='chn'>，则</span><var>T(n)=&Theta;(n<sup>log<sub>b</sub>a</sup>lgn)</var></li>
+                <li><span class='chn'>若对于某个正常数&epsilon;有</span><var>f(n)=&Omega;(n<sup>log<sub>b</sub>a+&epsilon;</sup>)</var><span class='chn'>，且对于某个小于</span>1<span class='chn'>的常数和所有足够大的</span>n<span class='chn'>有</span>
+                    <var>af(n/b)&leq;cf(n)</var><span class='chn'>，则</span><var>T(n)=&Theta;(f(n))</var></li>
+            </ol>
+        </details>
+        <div class='signature chn'>清华大学软件学院韦宇华</div>
+    </body>
+</html>
