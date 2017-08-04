@@ -14,7 +14,6 @@
             <hr />
             <p><span class='chn'>动态规划是一种算法的设计思想。方法是通过组合子问题的解来求解原问题。</span>(programming<span class='chn'>是指类似于填表格来求解问题的方法</span>)</p>
             <p><span class='chn'>不难发现这个思想与分治思想有着很相似的地方——求解子问题，并用子问题的解来求出原问题的解。区别在于分治在划分子问题时，子问题是互不相交的，而在动态规划思想中，不同的子问题一般拥有公共的子子问题。在动态规划问题中，每个子问题只会被求解一次然后将解存在一个表格中以避免重复计算。</span></p>
-            <br />
             <p><span class='chn'>动态规划一般用于求解最优化问题</span>(optimization problem)<span class='chn'>。</span></p>
             <p><span class='chn'>动态规划算法的设计一般采用下面的思路和步骤：</span></p>
             <ol class='chn'>
@@ -27,6 +26,17 @@
             <h4>eg.<span class='chn'>钢条切割问题</span></h4>
             <h4>eg.<span class='chn'>矩阵链问题</span></h4>
             <h3 class='chn'>动态规划原理</h3>
+            <p><span class='chn'>适合应用动态规划方法的问题应该具备两个要素：最优子结构与子问题重叠。</span></p>
+            <p class='def'><span class='chn'>如果一个问题的额最优解包含其子问题的最优解，我们称此问题具有最有子结构性质。</span></p>
+            <p><span class='chn'>如果一个问题不具有最优子结构的性质，那么显然我们是不能对其使用动态规划的方法的。当然一个具有最优子结构的问题也可能可以通过贪心来解决。而一般在挖掘最优子结构性质的过程中，会遵循下面的模式：</span></p>
+            <ol>
+                <li><span class='chn'>证明问题最优解的第一个组成部分是做出一个选择。做出这次选择会产生1个或者多个待解决的子问题。</span></li>
+                <li><span class='chn'>对于一个给定问题，在其可能的第一步选择中，假定已经知道了哪种选择才会得到最优解，且不关心具体的得到这种选择的方法，仅仅假定已经知道了这样的选择。</span></li>
+                <li><span class='chn'>给定可获得最优解的选择后，确定这次选择会产生哪些问题，且如何刻画子问题空间。</span></li>
+                <li><span class='chn'>证明作为构成原问题最优解的部分， 子问题的解就是本身的最优解。</span></li>
+            </ol>
+            <p><span class='chn'>要注意的是，这些子问题应该具有相互无关性</span>(independence)<span class='chn'>。</span></p>
+            <h4>eg.<span class='chn'>无权最短路与无权最长简单路</span></h4>
         </details>
         <details class='card'>
             <summary>Common models<span class='chn'>常见动态规划问题类型</span></summary>
