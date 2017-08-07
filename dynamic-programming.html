@@ -41,6 +41,22 @@
         <details class='card'>
             <summary>Common models<span class='chn'>常见动态规划问题类型</span></summary>
             <hr />
+            <h3><span class='chn'>基本递推</span></h3>
+            <p><span class='chn'>这种类型的问题通常比较简单，根据实际情况枚举可能的子问题并组合答案即可。</p>
+            <h4>eg.<a href='http://vijos.org/p/1121' target='_blank'>vijos 1121[NOIP2002]<span class='chn'>马拦过河卒</span></a></h4>
+            <details class='incard'>
+                <summary class='chn'>提示</summary>
+                <hr />
+                <p><span class='chn'>注意边界判定</span></p>
+            </details>
+            <h3><span class='chn'>背包</span></h3>
+            <p><span class='chn'>即用一个有容量的背包来装物品，要求一个总价值最大的装包方案。根据物品可以取的次数可以分为01背包，无限背包，多重背包等种类。</span></p>
+            <h4>eg.<a href='http://vijos.org/p/1133' target='_blank'>vijos 1133[NOIP2001]<span class='chn'>装箱问题</span></a></h4>
+            <details class='incard'>
+                <summary class='chn'>提示</summary>
+                <hr />
+                <p><span class='chn'>简单的背包</span></p>
+            </details>
             <h3><span class='chn'>区间</span>DP</h3>
             <p><span class='chn'>这种类型的问题通常与一个区间有关。即在一定的区间内取一个最优解。一个区间的最优解可以由其子区间的最优解构造。一种常见的状态转移方程是</span><var>f[l, r] = opt(merge(f[l, k], f[k + 1, r])) (l&le;k&le;r).</var>
             <var>opt</var><span class='chn'>表示取最优值。</span><var>merge</var><span class='chn'>是将子问题的解合并成其父问题的解的方法。</span></p>
@@ -50,6 +66,12 @@
                 <hr />
                 <p><span class='chn'>对任意一棵树枚举其根节点，取最优解</span></p>
             </details>
+            <h4>eg.<a href='http://vijos.org/p/1117' target='_blank'>vijos 1117[NOIP2001][<span class='chn'>提高</span>]<span class='chn'>数的划分</span></a></h4>
+            <details class='incard'>
+                <summary class='chn'>提示</summary>
+                <hr />
+                <p><span class='chn'>注意划分的方法，要不重复，不遗漏</span></p>
+            </details>
             <h3>LIS<span class='chn'>最长不上升子序列</span></h3>
             <p><span class='chn'>这种类型的问题通常是要求一个序列的最长不上升子序列。常见的状态转移方程是</span><var>f[i] = max(f[k]) + 1, (1&le;k&le;i, data[k] <= data[i])</var>.</p>
             <h4>eg.<a href='http://vijos.org/p/1098' target='_blank'>vijos 1098[NOIP2004][<span class='chn'>提高</span>]<span class='chn'>合唱队形</span></a></h4>
@@ -58,8 +80,14 @@
                 <hr />
                 <p><span class='chn'>两次LIS</span></p>
             </details>
-            <h3><span class='chn'>背包</span></h3>
-            <p><span class='chn'>即用一个有容量的背包来装物品，要求一个总价值最大的装包方案。根据物品可以取的次数可以分为01背包，无限背包，多重背包等种类。</span></p>
+            <h3><span class='chn'>状态压缩动态规划</span></h3>
+            <p><span class='chn'>这种问题属于偏难的题目，而难点往往在于对情况的分析与对状态的压缩方法的选择。</p>
+            <h4>eg.<a href='http://vijos.org/p/1002' target='_blank'>vijos 1002[NOIP2005][<span class='chn'>提高</span>]<span class='chn'>过河</span></a></h4>
+            <details class='incard'>
+                <summary class='chn'>提示</summary>
+                <hr />
+                <p><span class='chn'>删去无用的空白长度</span></p>
+            </details>
         </details>
     </body>
 </html>
